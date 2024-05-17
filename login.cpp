@@ -47,3 +47,28 @@ bool loginUser() {
     std::cout << "Login failed.\n";
     return false;
 }
+int main() {
+    int choice;
+    do {
+        std::cout << "1. Register\n2. Login\n3. Exit\nEnter your choice: ";
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1:
+                registerUser();
+                break;
+            case 2:
+                if (loginUser()) {
+                    // Place further user-specific actions here
+                }
+                break;
+            case 3:
+                std::cout << "Exiting program.\n";
+                break;
+            default:
+                std::cout << "Invalid option. Please try again.\n";
+        }
+    } while (choice != 3);
+
+    return 0;
+}

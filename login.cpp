@@ -2,6 +2,7 @@
 #include <fstream>
 #include <unordered_map>
 #include <string>
+#include <cstdlib> 
 
 // Function to register a new user
 void registerUser() {
@@ -11,7 +12,6 @@ void registerUser() {
     std::cout << "Enter a new password: ";
     std::cin >> password;
 
-    // Open file in append mode to add new users
     std::ofstream file("users.txt", std::ios::app);
     if (file.is_open()) {
         file << username << " " << password << "\n";
@@ -47,6 +47,7 @@ bool loginUser() {
     std::cout << "Login failed.\n";
     return false;
 }
+
 int main() {
     int choice;
     do {
@@ -59,11 +60,16 @@ int main() {
                 break;
             case 2:
                 if (loginUser()) {
-                    // Place further user-specific actions here
+                    
                 }
                 break;
             case 3:
                 std::cout << "Exiting program.\n";
+                #if defined(_WIN32)
+                system("cls"); 
+                #else
+                system("clear");
+                #endif
                 break;
             default:
                 std::cout << "Invalid option. Please try again.\n";
